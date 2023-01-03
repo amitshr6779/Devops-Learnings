@@ -30,4 +30,10 @@ services:
           - /home/ubuntu/data/mongoservice1:/data/db
 ```
 
+Now start the conatiner using ` docker-compose up -d `
+</br>
+</br>
+
+## How To Use the MongoDB Shell ?
+
 
