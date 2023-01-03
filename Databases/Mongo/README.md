@@ -18,7 +18,7 @@ services:
     mongoservice1:
         restart: always
         image: mongo:4.4
-        container_name: mongoservice1
+        container_name: mongocontainername
         command: ["--port", "40000"]
         environment:
           MONGO_INITDB_ROOT_USERNAME: user1
@@ -36,4 +36,20 @@ Now start the conatiner using ` docker-compose up -d `
 
 ## How To Use the MongoDB Shell ?
 
+#### Get inside mongo conatiner
+```docker exec -it mongocontainername bash```
+#### Start mongo shell
+```mongo --port 40000```
 
+#### Switch to admin database
+``` use admin```
+#### Login to DB, if DB is Auth Protected
+```db.auth("username", "password")```
+#### List DBs
+```show dbs```
+#### List collections
+```show collections```
+#### Fetch data inside a collection
+``` db.your-collection-name.find()```
+#### Create user and assign role
+```db.createUser( { user: "USERNAME",  pwd: "PASSWORD", roles: [ { role: "read",  db: "DB-NAME" } ] });```
