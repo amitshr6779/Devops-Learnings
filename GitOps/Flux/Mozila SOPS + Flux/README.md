@@ -75,11 +75,10 @@ cat <<'EOF' >> secret.yml
 apiVersion: v1
 kind: Secret
 metadata:
-    name: mysql-secret
-    namespace: default
+  name: mysql-secret
+type: kubernetes.io/basic-auth
 stringData:
-    MYSQL_USER: root
-    MYSQL_PASSWORD: super-Secret-Password!!!!
+  password: test1234
 EOF
 ```
 For Encrytion
@@ -184,5 +183,37 @@ Create a kustomization for reconciling the secrets on the cluster:
 flux create kustomization <REPO-NAME> --source=<REPO-NAME> --path="./Path/of/manifest/inside/repo" --prune=true --interval=10s --decryption-provider=sops --decryption-secret=sops-age
 ```
 
+## Let`s test our encrytion decrytion of secret file.
+<summary> Push your encryted file to Github repo </sumaary>
+
+```
+apiVersion: v1
+data:
+    sops: ENC[AES256_GCM,data:BThY4xVa+SM=,iv:odFiupGKWtOJKrZ63idvgtgpDGCCPdWijWQb1NTeIDY=,tag:D3oFsdOYFHkvlTFUyq6s9Q==,type:str]
+kind: Secret
+metadata:
+    creationTimestamp: null
+    name: sopstest
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1p7zzzyj6qajqqdy9qssz3exwn8hws9l5swjxqhx7ryuznhza0yjsaeast4
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBPdjNaYlpZNDJ1cGlaR0xO
+            dmFnOG9JNExNYkVQTGZLdjc0U2lmSWZuWFJZCkowbSt1NHlqT1BiWXloK1luOTZl
+            dE5WWFlqL2hSMm9ScDFUZTVnYnprUlEKLS0tIFN5cjRGeG1hUmVORjhxb2pYeGFo
+            ak05OWJSWnZtNng2TWlRWnVsd1Z1SXcKvlJ2v8kjlzjh6TCbuipXb3g4rG3F2DAs
+            rpxm7EiTR51/GQbcQcU8qd/FC0KKOAifmLeW7PXODqk6pU0gdSPF1Q==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2022-10-04T11:43:57Z"
+    mac: ENC[AES256_GCM,data:MdCIUTrfZX4/0T5D5eqQtywTLJjWazgNd+oq//x7I88OKiA9vKuG22/K0rn7I6Rc9Motbilf3lCbz1Une8HJ9Z1L9BVcaFJJid13TCTm01+E//vCKNJwDfjnX5IkemUlsrPnWN/2IoIvqlgeUZUKZmfIzYWBAKvkYDz9L3DsRFo=,iv:ZtPtLBUw00g8C+UBNwvfgTcjzGpumv3xkMS8ClmVmA4=,tag:1kXPMR8+scKwAg1nKhz5QA==,type:str]
+    pgp: []
+    encrypted_regex: ^(data|stringData)$
+    version: 3.7.3
+```
 
 
