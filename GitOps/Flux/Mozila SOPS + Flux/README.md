@@ -87,6 +87,38 @@ For Encrytion
 sops -e secret.yml
 sops -e -i secret.yml
 ```
+After Encryption our `secret.yml` will look like this:
+```
+cat secret.yml
+
+apiVersion: v1
+data:
+    sops: ENC[AES256_GCM,data:BThY4xVa+SM=,iv:odFiupGKWtOJKrZ63idvgtgpDGCCPdWijWQb1NTeIDY=,tag:D3oFsdOYFHkvlTFUyq6s9Q==,type:str]
+kind: Secret
+metadata:
+    creationTimestamp: null
+    name: sopstest
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1p7zzzyj6qajqqdy9qssz3exwn8hws9l5swjxqhx7ryuznhza0yjsaeast4
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBPdjNaYlpZNDJ1cGlaR0xO
+            dmFnOG9JNExNYkVQTGZLdjc0U2lmSWZuWFJZCkowbSt1NHlqT1BiWXloK1luOTZl
+            dE5WWFlqL2hSMm9ScDFUZTVnYnprUlEKLS0tIFN5cjRGeG1hUmVORjhxb2pYeGFo
+            ak05OWJSWnZtNng2TWlRWnVsd1Z1SXcKvlJ2v8kjlzjh6TCbuipXb3g4rG3F2DAs
+            rpxm7EiTR51/GQbcQcU8qd/FC0KKOAifmLeW7PXODqk6pU0gdSPF1Q==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2022-10-04T11:43:57Z"
+    mac: ENC[AES256_GCM,data:MdCIUTrfZX4/0T5D5eqQtywTLJjWazgNd+oq//x7I88OKiA9vKuG22/K0rn7I6Rc9Motbilf3lCbz1Une8HJ9Z1L9BVcaFJJid13TCTm01+E//vCKNJwDfjnX5IkemUlsrPnWN/2IoIvqlgeUZUKZmfIzYWBAKvkYDz9L3DsRFo=,iv:ZtPtLBUw00g8C+UBNwvfgTcjzGpumv3xkMS8ClmVmA4=,tag:1kXPMR8+scKwAg1nKhz5QA==,type:str]
+    pgp: []
+    encrypted_regex: ^(data|stringData)$
+    version: 3.7.3
+```
 For Decryption
 ```
 sops -d sops-test-secret.yml
@@ -94,6 +126,61 @@ sops -d sops-test-secret.yml
 
 ## Integration of Mozila SOPS with Flux
 ### Install Flux
+To install Flux for your respective operating system, check out the offical installation docs by flux [here](https://fluxcd.io/flux/installation/)
+
+For example, to install flux on  Ubuntu, run the following command:
+```
+curl -s https://fluxcd.io/install.sh | sudo bash
+```
+
+To add auto complete of flux command, run the following command.
+```
+. <(flux completion bash)
+```
+
+To check that the installation was successful and that the Kubernetes cluster you’re using is compatible with Flux, run the following command.
+```
+flux check --pre
+```
+
+To configures the Kubernetes cluster to sync with the repository, run the following command. <br>
+`` flux bootstrap`` will creates the GitHub repository if it doesn’t exist and commits the toolkit to the main or master branch. <br>
+*Note:* add path flux at the end of bootsrrap path
+```
+flux bootstrap git --url=<YOUR-GIT-REPO-URL> --branch=master --username=<YOUR-GIT-USERNAME> --password=<YOUR-GIT-TOKEN> --token-auth=true --path=<./YOUR/MANIFEST/PATH/IN/REPO/flux>
+```
+To update source to sync with diffrent option like interval etc, run the following command.
+```
+flux create source git <Your-Repo-Name> --url=<YOUR-REPO-URL> --branch=master --interval=30s --username=<YOUR-GIT-USERNAME> --password=<YOU-GIT-TOKEN>
+```
+
+
+Create a secret with the age private key i.e `age.agekey` created in above steps
+```
+cat age.agekey | kubectl create secret generic sops-age --namespace=flux-system --from-file=age.agekey=/dev/stdin
+```
+Above command creates a generic secret called sops-age with our key in the flux-system namespace. The secret exists only inside the flux-system namespace so that only the pods in that namespace have permission to read it. <br>
+
+Now,Test the secret created or not in flux-system namespace
+```
+kubectl  get secret -n flux-system
+NAME                                  TYPE                                  DATA   AGE
+default-token-ccksf                   kubernetes.io/service-account-token   3      9m1s
+flux-system                           Opaque                                2      8m59s
+flux-test                             Opaque                                2      7m45s
+helm-controller-token-5rshs           kubernetes.io/service-account-token   3      8m59s
+kustomize-controller-token-mrrqm      kubernetes.io/service-account-token   3      8m59s
+notification-controller-token-lfjhj   kubernetes.io/service-account-token   3      8m59s
+sops-age                              Opaque                                1      15s
+source-controller-token-glj25         kubernetes.io/service-account-token   3      8m59s
+
+```
+
+To Deploy apps to kubernetes cluster with manifest files, create kustomization. <br>
+`Kustomization` defines a pipeline for fetching, decrypting, building, validating and applying Kustomize overlays or plain Kubernetes manifests. 
+```
+flux create kustomization <REPO-NAME> --source=<REPO-NAME> --path="./Path/of/manifest/inside/repo" --prune=true --interval=10s
+```
 
 
 
