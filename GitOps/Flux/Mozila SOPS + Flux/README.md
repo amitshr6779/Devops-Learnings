@@ -184,36 +184,63 @@ flux create kustomization <REPO-NAME> --source=<REPO-NAME> --path="./Path/of/man
 ```
 
 ## Let`s test our encrytion decrytion of secret file.
-<summary> Push your encryted file to Github repo </sumaary>
+<summary> Push your encryted file to Github repo </sumaary> 
+<br> <br>
+
+![Screenshot from 2023-01-09 01-36-00](https://user-images.githubusercontent.com/84858868/211216714-169326b0-e7fd-4a5e-9eba-580c6a0d4319.png)
+
+<summary> Now Lets check secret, in kubernetes cluster </summary>
 
 ```
-apiVersion: v1
+kubectl  get secret
+NAME                  TYPE                                  DATA   AGE
+default-token-2nlbl   kubernetes.io/service-account-token   3      29m
+mysql-secret          kubernetes.io/basic-auth              1      10s
+
+```
+```
+ kubectl  edit secret mysql-secret
+ apiVersion: v1
 data:
-    sops: ENC[AES256_GCM,data:BThY4xVa+SM=,iv:odFiupGKWtOJKrZ63idvgtgpDGCCPdWijWQb1NTeIDY=,tag:D3oFsdOYFHkvlTFUyq6s9Q==,type:str]
+  password: dGVzdDEyMzQ=
 kind: Secret
 metadata:
-    creationTimestamp: null
-    name: sopstest
-sops:
-    kms: []
-    gcp_kms: []
-    azure_kv: []
-    hc_vault: []
-    age:
-        - recipient: age1p7zzzyj6qajqqdy9qssz3exwn8hws9l5swjxqhx7ryuznhza0yjsaeast4
-          enc: |
-            -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBPdjNaYlpZNDJ1cGlaR0xO
-            dmFnOG9JNExNYkVQTGZLdjc0U2lmSWZuWFJZCkowbSt1NHlqT1BiWXloK1luOTZl
-            dE5WWFlqL2hSMm9ScDFUZTVnYnprUlEKLS0tIFN5cjRGeG1hUmVORjhxb2pYeGFo
-            ak05OWJSWnZtNng2TWlRWnVsd1Z1SXcKvlJ2v8kjlzjh6TCbuipXb3g4rG3F2DAs
-            rpxm7EiTR51/GQbcQcU8qd/FC0KKOAifmLeW7PXODqk6pU0gdSPF1Q==
-            -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2022-10-04T11:43:57Z"
-    mac: ENC[AES256_GCM,data:MdCIUTrfZX4/0T5D5eqQtywTLJjWazgNd+oq//x7I88OKiA9vKuG22/K0rn7I6Rc9Motbilf3lCbz1Une8HJ9Z1L9BVcaFJJid13TCTm01+E//vCKNJwDfjnX5IkemUlsrPnWN/2IoIvqlgeUZUKZmfIzYWBAKvkYDz9L3DsRFo=,iv:ZtPtLBUw00g8C+UBNwvfgTcjzGpumv3xkMS8ClmVmA4=,tag:1kXPMR8+scKwAg1nKhz5QA==,type:str]
-    pgp: []
-    encrypted_regex: ^(data|stringData)$
-    version: 3.7.3
+  creationTimestamp: "2023-01-07T09:38:53Z"
+  labels:
+    kustomize.toolkit.fluxcd.io/name: flux-test
+    kustomize.toolkit.fluxcd.io/namespace: flux-system
+  name: mysql-secret
+  namespace: default
+  resourceVersion: "6542"
+  uid: 5a9d40b3-970f-4c44-845d-e09259e3268f
+type: kubernetes.io/basic-auth
 ```
+Above we can see that our encrypted value of `password` is decrypted and applied in cluster as base64 encoded value.
+For further clarification,  we decode above base64 encoded value and verify it.
+```
+echo dGVzdDEyMzQ= | base64 --decode
+test1234
+```
+<summary> Now let`s deploy MySql pod , and commit your manifest to git repo at the specfied path </path> <br>
+<br>
 
+![Screenshot from 2023-01-09 02-31-57](https://user-images.githubusercontent.com/84858868/211218987-64a3bb0b-fd38-4b4a-91d5-474786b4ccd8.png)
+
+Now , we can check in cluster, MySql pod is deployed successfully.
+```
+kubectl get pods
+NAME                     READY   STATUS    RESTARTS   AGE
+mysql-75694ccdf6-kwvsg   1/1     Running   0          135m
+```
+<br>
+Now, exec inside pod , login to MySql DB
+
+```
+kubectl  exec -it mysql-75694ccdf6-kwvsg bash
+```
+<br> 
+
+![Screenshot from 2023-01-09 02-46-01](https://user-images.githubusercontent.com/84858868/211219498-65dbdf74-828c-42f4-b69c-455816574339.png)
+
+Finally we can login MySql DB, through secret applied in cluster
 
