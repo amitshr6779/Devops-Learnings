@@ -153,7 +153,7 @@ To update source to sync with diffrent option like interval etc, run the followi
 ```
 flux create source git <Your-Repo-Name> --url=<YOUR-REPO-URL> --branch=master --interval=30s --username=<YOUR-GIT-USERNAME> --password=<YOU-GIT-TOKEN>
 ```
-
+<br>
 
 Create a secret with the age private key i.e `age.agekey` created in above steps
 ```
@@ -175,11 +175,13 @@ sops-age                              Opaque                                1   
 source-controller-token-glj25         kubernetes.io/service-account-token   3      8m59s
 
 ```
+<br>
 
-To Deploy apps to kubernetes cluster with manifest files, create kustomization. <br>
-`Kustomization` defines a pipeline for fetching, decrypting, building, validating and applying Kustomize overlays or plain Kubernetes manifests. 
+**Configure in-cluster secrets decryption**  <br>
+Create a kustomization for reconciling the secrets on the cluster:
+
 ```
-flux create kustomization <REPO-NAME> --source=<REPO-NAME> --path="./Path/of/manifest/inside/repo" --prune=true --interval=10s
+flux create kustomization <REPO-NAME> --source=<REPO-NAME> --path="./Path/of/manifest/inside/repo" --prune=true --interval=10s --decryption-provider=sops --decryption-secret=sops-age
 ```
 
 
