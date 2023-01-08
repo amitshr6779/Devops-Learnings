@@ -20,7 +20,8 @@ flux check --pre
 ```
 
 To configures the Kubernetes cluster to sync with the repository, run the following command. <br>
-`` flux bootstrap`` will creates the GitHub repository if it doesn’t exist and commits the toolkit to the main or master branch.
+`` flux bootstrap`` will creates the GitHub repository if it doesn’t exist and commits the toolkit to the main or master branch. <br>
+*Note:* add path flux at the end of bootsrrap path
 ```
 flux bootstrap git --url=<YOUR-GIT-REPO-URL> --branch=master --username=<YOUR-GIT-USERNAME> --password=<YOUR-GIT-TOKEN> --token-auth=true --path=<./YOUR/MANIFEST/PATH/IN/REPO/flux>
 ```
