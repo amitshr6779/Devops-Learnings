@@ -38,6 +38,7 @@ Now, Test installtion of age is successful or not
 ```
  age -version
  age-keygen -version
+ age-keygen --help
 ```
 ## Let’s make a key
 Generate an age key with age using age-keygen, the key name must end with .agekey to be detected as an age key.
