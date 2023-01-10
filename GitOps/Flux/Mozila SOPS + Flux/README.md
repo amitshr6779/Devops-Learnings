@@ -247,3 +247,4 @@ Finally we can login MySql DB, through secret applied in cluster
 
 ## Refrences
 https://fluxcd.io/flux/guides/mozilla-sops/
+https://fluxcd.io/flux/components/kustomize/kustomization/#secrets-decryption
