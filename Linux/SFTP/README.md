@@ -114,4 +114,4 @@ sftp testuser@<sftp-server-DNS-OR-IP>
 
 **Refrences** <br>
 https://blog.e-zest.com/setting-up-sftp-server-on-amazon-ec2  <br>
-https://www.tecmint.com/sftp-command-examples/
+https://dev.to/tanmaygi/how-to-create-a-sftp-server-on-ec2centosubuntu--1f0m
