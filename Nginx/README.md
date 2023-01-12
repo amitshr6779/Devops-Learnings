@@ -18,7 +18,7 @@ sudo ln -s /etc/nginx/sites-enabled/  /opt/nginx
 ### Now write down you routing file
 ```
 cd /opt/nginx/sites-enabled
-vi test.technicalguy.club
+sudo vi test.technicalguy.club
 ```
 
 ```
@@ -27,7 +27,7 @@ server {
   location / {
         proxy_pass http://test.technicalguy.club:5601;
    }
-
+}
 ```
 ###  Now test your above nginx configration
 ```
@@ -46,4 +46,5 @@ sudo apt install certbot python3-certbot-nginx
 ```
 sudo certbot -t
 ```
-
+<br> REFRENCES:  <br>
+https://certbot.eff.org/instructions?ws=nginx&os=debianstretch
