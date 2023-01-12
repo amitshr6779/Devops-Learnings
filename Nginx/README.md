@@ -9,7 +9,7 @@ sudo systemctl status nginx
 ```
 ### Setting Up Server for routing
 ```
-mkdir -p /opt/nginx/
+sudo mkdir -p /opt/nginx/
 cd /etc/ngninx
 sudo ln -s /etc/nginx/nginx.conf /opt/nginx
 sudo ln -s /etc/nginx/sites-enabled/  /opt/nginx
