@@ -219,3 +219,7 @@ db.auth("admin", "password");
 show dbs
 rs.status()
 ```
+
+**Refrences** <br>
+[Medium Blog](https://prashix.medium.com/setup-mongodb-replicaset-with-authentication-enabled-using-docker-compose-5edd2ad46a90)
+
