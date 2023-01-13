@@ -53,3 +53,16 @@ Now start the conatiner using ` docker-compose up -d `
 ``` db.your-collection-name.find()```
 #### Create user and assign role
 ```db.createUser( { user: "USERNAME",  pwd: "PASSWORD", roles: [ { role: "read",  db: "DB-NAME" } ] });```
+
+#### To insert some data inside , DB
+
+```
+db.pets.insert({name : 'pet'})
+db.pets.insert({age : '2'})
+db.pets.insert({breed : 'german'})
+
+use pets
+show collections
+db.pets.find()
+db.eat.find().pretty()
+```
