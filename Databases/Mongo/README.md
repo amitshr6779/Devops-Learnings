@@ -57,6 +57,7 @@ Now start the conatiner using ` docker-compose up -d `
 #### To insert some data inside , DB
 
 ```
+use pets
 db.pets.insert({name : 'pet'})
 db.pets.insert({age : '2'})
 db.pets.insert({breed : 'german'})
