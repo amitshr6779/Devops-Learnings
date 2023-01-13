@@ -64,5 +64,5 @@ db.pets.insert({breed : 'german'})
 use pets
 show collections
 db.pets.find()
-db.eat.find().pretty()
+db.pets.find().pretty()
 ```
