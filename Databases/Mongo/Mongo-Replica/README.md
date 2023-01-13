@@ -134,6 +134,88 @@ docker-compose up -d
 <summary> Go inside primary mongo conatiner and create initial admin user </summary>
 
 
+# Setup Replica set with auth in multiple cluster ?
+<summary> Export some env value </summary>
 
+```
+export HOST1=cluster1-ip
+export HOST2=cluster2-ip
+export HOST3=cluster3-ip
+```
+<summary> Create a openssl key file </summary>
 
+```
+openssl rand -base64 700 > /home/ubuntu/testing/file.key
+```
 
+<summary> Tranfer above opnssl key to other server </summary>
+<br>
+<summary> Run below docker compose file in server 1 </summary>
+
+```
+version: "3.3"
+services:
+    mongoquiz1:
+        restart: always
+        image: mongo:4.4
+        container_name: mongoquiz1
+        #command: ["--replSet", "dev-kenko-test", "--port", "40061"]
+        entrypoint: [ "/usr/bin/mongod", "--keyFile", "/data/file.key", "--replSet", "rs-key", "--journal", "--bind_ip_all", "--port", "40050" ]
+        ports:
+          - 40050:40050
+        volumes:
+          - /home/ubuntu/data/mongoquiz1:/data/db
+          - "./scripts/file.key:/data/file.key"
+        healthcheck:
+          test: test $$(echo "rs.initiate({\"_id\":\"rs-key\",\"members\":[{\"_id\":0,\"host\":\"${HOST1}:40050\"},{\"_id\":1,host:\"$:40051\"},{\"_id\":2,\"host\":\"${HOST3}:40052\"}]}).ok || rs.status().ok" | mongo --port 40050 --quiet) -eq 1
+          interval: 10s
+          start_period: 30s
+
+```
+<summary> Similarly, run below docker compose file in server 2 </summary>
+
+```
+version: "3.3"
+services:
+    mongoquiz2:
+        restart: always
+        image: mongo:4.4
+        container_name: mongoquiz2
+        #command: ["--replSet", "dev-kenko-test", "--port", "40062"]
+        entrypoint: [ "/usr/bin/mongod", "--keyFile", "/data/file.key", "--replSet", "rs-key", "--journal", "--bind_ip_all", "--port", "40051" ]
+        ports:
+          - 40051:40051
+        volumes:
+          - /home/ubuntu/data/mongoquiz2:/data/db
+          - "./scripts/file.key:/data/file.key"
+```
+
+<summary> Similarly, run below docker compose file in server 3 </summary>
+
+```
+version: "3.3"
+services:
+    mongoquiz3:
+        restart: always
+        image: mongo:4.4
+        container_name: mongoquiz3
+        #command: ["--replSet", "dev-kenko-test", "--port", "40062"]
+        entrypoint: [ "/usr/bin/mongod", "--keyFile", "/data/file.key", "--replSet", "rs-key", "--journal", "--bind_ip_all", "--port", "40052" ]
+        ports:
+          - 40052:40052
+        volumes:
+          - /home/ubuntu/data/mongoquiz2:/data/db
+          - "./scripts/file.key:/data/file.key"
+```
+
+<summary> Now ,start the docker-compose of server-2 and server-3 , after that start docker-compose of  primary server</summary>
+<br>
+<summary> Now , exec into mongo shell of primary conatiner and crete initial admin user </summary>
+
+```
+admin = db.getSiblingDB("admin");
+admin.createUser({user: "admin", pwd:"password", roles:[{role:"root", db:"admin"}]});
+db.auth("admin", "password");
+show dbs
+rs.status()
+```
