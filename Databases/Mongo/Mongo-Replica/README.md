@@ -4,7 +4,7 @@ A replica set is a group of mongod instances that host the same data set. In a r
 At the time of automatic failover or maintenance, election establishes for primary and a new primary node is elected.
 After the recovery of failed node, it again join the replica set and works as a secondary node.
 
-### Setup Replica set in single cluster ?
+## Setup Replica set with auth in single cluster ?
 
 <summary>export env value for URL</summary>
 
@@ -102,14 +102,36 @@ db.auth("admin", "password");
 rs.status()
 ```
 
+<summary> Also, we can verify replica status from secondary mongo conatiner </summary>
 
+```
+rs.slaveOk()
+rs.secondaryOk()
+```
+Now, setup is done and replica set is up and running. <br> <br>
 
+### Enable Auth In Already Running Replica Set in single cluster :
+<summary> Existing docker-compose of replica set without auth should be up and running </summary> <br>
+<summary> Create a key file </summary> <br>
+<summary> Add Entrypoint command in docker compose file </summary> 
 
+```
+entrypoint: [ "/usr/bin/mongod", "--keyFile", "/data/file.key", "--replSet", "my-replica-set-test-new", "--journal", "--bind_ip_all", "--port", "40022" ]
+```
+**Note** :  Make sure to provide your existing mongo replica set name under `--replSet` key
 
+<summary>Also add volume mount of key file </summary>
 
+```
+volumes:
+         - "/home/ubuntu/testing/file.key:/data/file.key"
+```
+<summary>Restart docker compose file </summary>
 
-
-
+```
+docker-compose up -d
+```
+<summary> Go inside primary mongo conatiner and create initial admin user </summary>
 
 
 
