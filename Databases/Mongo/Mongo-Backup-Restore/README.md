@@ -26,8 +26,14 @@ docker exec -i <container-name> mongorestore --port <db-port> --authenticationDa
 ```
 docker exec -i <Contsiner-Name>  mongoexport --db $DB_NAME --port 27017  --username $user --password $password --authenticationDatabase admin --collection $COLLECTION_NAME --type=json > ./$COLLECTION_NAME.json
 ```
-**To restore collection**
+**To restore collection as json**
 
 ```
 docker exec -i $CONTAINER_NAME mongoimport --host $HOST:$PORT --username $user --password $password --authenticationDatabase admin --drop --db $DB_NAME --drop --collection $COLLECTION_NAME < $COLLECTION_NAME.json
+```
+
+**Take dump of collection fields  as csv**
+
+```
+docker exec -i <container-name>  mongoexport  --db <db-name> --port <db-port> --authenticationDatabase admin -u <username> -p <password> --collection <collection-name> --type=csv --fields filed1,filed2,etc > <collection-name>.csv
 ```
