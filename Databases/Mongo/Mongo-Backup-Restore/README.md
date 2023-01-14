@@ -21,3 +21,13 @@ docker exec -i <conatiner-name> mongorestore --port <db-port> --authenticationDa
 ```
 docker exec -i <container-name> mongorestore --port <db-port> --authenticationDatabase admin -u <username> -p <password>  --nsFrom "<DB_NAME>.*" --nsTo "<DB_NAME_RESTORE>.*"  --gzip --archive=dump_file.gz
 ```
+**To take collection dump as json**
+
+```
+docker exec -i <Contsiner-Name>  mongoexport --db $DB_NAME --port 27017  --username $user --password $password --authenticationDatabase admin --collection $COLLECTION_NAME --type=json > ./$COLLECTION_NAME.json
+```
+**To restore collection**
+
+```
+docker exec -i $CONTAINER_NAME mongoimport --host $HOST:$PORT --username $user --password $password --authenticationDatabase admin --drop --db $DB_NAME --drop --collection $COLLECTION_NAME < $COLLECTION_NAME.json
+```
