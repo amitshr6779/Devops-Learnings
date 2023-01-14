@@ -67,3 +67,24 @@ show collections
 db.pets.find()
 db.pets.find().pretty()
 ```
+
+#### To find collection fields
+
+```
+use <DB-Name>
+Object.keys(db.<Collection-Name>.findOne())
+```
+### To drop database or collection
+
+```
+use <database_name>
+db.<collection-name>.drop()
+db.dropDatabase()
+```
+
+#### To drop user and change password
+
+```
+db.dropUser("myuser")
+db.changeUserPassword("app_user", "new password")
+```
