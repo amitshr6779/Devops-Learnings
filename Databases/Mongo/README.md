@@ -88,3 +88,9 @@ db.dropDatabase()
 db.dropUser("myuser")
 db.changeUserPassword("app_user", "new password")
 ```
+
+**To find primary db name**
+
+```
+docker exec -it <container-name> mongo --port <mongo-port> mongo --eval "printjson(rs.isMaster().primary)"
+```
