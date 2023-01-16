@@ -60,3 +60,9 @@ metadata:
 ```
 
 After that restart `argocd-application-controller`  pod  from argocd namespace
+
+### To Remove ArgoCD from K8s cluster
+
+```
+kubectl delete -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+```
