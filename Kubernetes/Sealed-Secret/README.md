@@ -88,3 +88,21 @@ kubeseal --format yaml --scope namespace-wide <secret-cw.yaml >sealedsecret-nw.y
 ```
 kubeseal --format yaml --scope cluster-wide <secret-cw.yaml >sealedsecret-cw.yaml
 ```
+<br>
+
+### Some Debugging commands.
+
+To check the  logs of controller
+
+```
+kubectl   logs  deploy/sealed-secrets-controller -n kube-system
+```
+To check sealed secret
+
+```
+kubectl get sealedsecret -n <namespace>
+```
+
+**Refrences** <br>
+1. [To Take Backup](https://medium.com/@knoldus/using-sealed-secrets-in-kubernetes-7f7518d4c984)  <br>
+2. [Backup & Re-encrypt Secret](https://medium.com/@ismailyenigul/take-backup-of-all-sealed-secrets-keys-or-re-encrypt-regularly-297367b3443)
