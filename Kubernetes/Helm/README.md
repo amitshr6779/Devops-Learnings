@@ -53,11 +53,20 @@ Copy your manifest files into `<your-chart-name>/templates/` folder
 * `<your-chart-name>/templates/configmap.yaml`
 * `<your-chart-name>/templates/secret.yaml`
 
+### Helm Lint
+To Test Chart syntax, run helm lint
+
+```
+helm lint <chart-name>
+```
+
+
 ### Test the rendering of our template
 
 ```
 helm template <Give-your-app-name> <your-chart-name>
 ```
+It will provide you list of list of templates or manfifest file which helm will generate.
 
 ## Install our app using our Chart
 
@@ -228,8 +237,6 @@ stringData:
     {
       "api_key" : "somesecretgoeshere"
     }
-
-
 ```
 
 Now , deploy application
@@ -253,13 +260,16 @@ spec:
 Rollout the change
 
 ```
-helm upgrade example-app example-app --values ./example-app/example-app-01.values.yaml
+helm upgrade <your-app-name> <your-chart-name> --values <path-of-values-file>
+Example:
+helm upgrade nginx nginx --values ./example-app/example-app-01.values.yaml
 ```
 
 ***If-Else and Default values***
 
 You can also set default values in case they are not supplied by the `values.yaml` file. <br/>
 This may help you keep the `values.yaml` file small <br/>
+Here, we will create if else condition to set resoures request and limits in Deployment file.
 
 ```
 {{- if .Values.deployment.resources }}
@@ -292,4 +302,18 @@ This may help you keep the `values.yaml` file small <br/>
       cpu: "1"
   {{- end}} 
 ```
+<br>
 
+### Rollback the Helm Release
+
+```
+helm rollback <your-app-name> <last-release-number>
+Example:
+helm rollback nginx 1
+````
+
+### Uninstall Helm Release
+
+```
+helm uninstall <your-app-name>
+```
