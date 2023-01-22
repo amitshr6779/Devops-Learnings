@@ -317,3 +317,11 @@ helm rollback nginx 1
 ```
 helm uninstall <your-app-name>
 ```
+
+### Helm: set argument
+The --set argument can also be used to defining the value in a values.yaml file. <br>
+Example :
+```
+helm upgrade nginx nginx --set deployment.tag=1.0.1
+```
+
