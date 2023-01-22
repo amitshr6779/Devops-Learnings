@@ -325,3 +325,88 @@ Example :
 helm upgrade nginx nginx --set deployment.tag=1.0.1
 ```
 
+## How to Add, Update or Remove Helm Repositories
+Helm chart repositories are remote servers containing a collection of Kubernetes resource files. 
+For example [artifacthub.io](https://artifacthub.io/) <br>
+
+To add any repo
+
+```
+helm repo add [NAME] [URL OF REPO]
+
+Ex:
+helm repo add bitnami https://charts.bitnami.com/bitnami
+```
+To list repo. added 
+
+```
+helm repo ls
+```
+To search any app. from  added repo.
+
+```
+helm search repo nginx
+```
+So, It will search for nginx app. in  added bitnami repo  above
+
+**Note:** ``helm search hub nginx`` will search nginx app in entire artifact hub
+
+To install chart /app from repo. added
+
+```
+helm install nginx bitnami/nginx
+helm ls --namespace default
+```
+
+Charts are deployed with default values. To add custom values, specify your values.yaml file
+
+```
+helm install my-release bitnami/nginx -f values.yaml
+```
+To Update all Helm repositories in your system, to sync with remote repositories.
+
+```
+helm repo update
+```
+
+To remove any repo from local
+
+```
+helm repo remove bitnami
+```
+
+#### Helm plugin
+You can check list of plugins here - [Helm Chart Plugins](https://helm.sh/docs/community/related/)
+
+Let's talk about one of the popular plugin i.e helm diff. This plugin helps you with - <br>
+
+* Finding the difference between the latest Helm revisions/versions
+* To know difference between Helm Release
+To Instal helm diff plugin
+
+```
+helm plugin install https://github.com/databus23/helm-diff
+helm plugin list
+```
+Now, make upgrade in your helm replese
+
+```
+helm upgrade naginx nginx  
+helm list -a
+```
+
+Now check what was diffrence between 2 diffrent releases using helm diff
+
+```
+helm diff revision nginx 1 2
+```
+Here 1 represents the first release and 2 represents the second release of nginx
+
+After running the helm diff command you will see it showing the difference between replicas.
+
+```
+  spec:
+-   replicas: 1
++   replicas: 2
+```
+
