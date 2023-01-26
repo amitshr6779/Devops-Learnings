@@ -27,13 +27,17 @@ kubectl get services ingress-nginx-controller
 * Using Helm
 ```
 helm repo add jetstack https://charts.jetstack.io
+
 helm repo update
+
 helm install \
   cert-manager jetstack/cert-manager \
   --namespace cert-manager \
   --create-namespace \
   --version v1.11.0 \
   --set installCRDs=true
+  
+ kubectl get crd
 ```
 
 * Using Kubectl
@@ -66,6 +70,9 @@ spec:
     - http01:
         ingress:
           class: nginx
+```
+```
+kubectl  get ClusterIssuer
 ```
 <br>
 
@@ -145,7 +152,6 @@ spec:
 kubectl  apply -f lets-encrypt.yaml
 kubectl get certificates -n default
 kubectl get secrets -n default
-
 ```
 
 #### Create Nginx Ingress Resources/Rules for exposing the apps outsie the cluster and Point Nginx Ingress Let’s Encrypt Certificate
