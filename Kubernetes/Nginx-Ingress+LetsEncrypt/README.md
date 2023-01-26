@@ -191,3 +191,23 @@ kubectl  apply -f ingress.yaml
 kubect get ing -n deafult
 ```
 
+**Now, Finally create a CNAME Record set in AWS ROUTE53 with  DNS Name and LoadBalancer as value**
+
+Now, access your web app outside the cluster i.e ingress host name 
+
+
+
+
+
+
+
+
+
+
+![Screenshot from 2023-01-27 02-21-49](https://user-images.githubusercontent.com/84858868/214948218-00272234-4236-4af8-ae22-6a051f9d4372.png)
+
+
+
+
+
+
