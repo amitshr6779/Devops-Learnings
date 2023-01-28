@@ -32,6 +32,72 @@ kubectl port-forward svc/argocd-server -n argocd --address 0.0.0.0  8080:443
 `Now visit to HOST-IP:8080in broweser  to acccess the argocd UI` <br>
 `NOTE : Default Login Username = admin`
 
+<br>
+To expose argocd-server outside of k8s cluster as  ingress
+<br> 
+
+Create `argocd-ingress.yaml` file for argocd
+
+```
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: argocd-server-ingress
+  namespace: argocd
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    kubernetes.io/ingress.class: nginx
+    kubernetes.io/tls-acme: "true"
+    nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+    # If you encounter a redirect loop or are getting a 307 response code
+    # then you need to force the nginx ingress to connect to the backend using HTTPS.
+    #
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+spec:
+  rules:
+  - host: argocd.example.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: argocd-server
+            port:
+              name: https
+  tls:
+  - hosts:
+    - argocd.example.com
+    secretName: argocd-secret # do not change, this is provided by Argo CD
+```
+<br>
+
+Now create arocd `argocd-certifacte.yaml` file
+
+```
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: argocd.example.com
+  namespace: argocd
+spec:
+  #secretName: argocd.example.com-tls
+  secretName: argocd-secret
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  commonName: argocd.example.com
+  dnsNames:
+  - argocd.example.com
+```
+
+```
+kubectl apply -f argocd-ingress.yaml
+kubectl apply -f argocd-certficate.yaml
+```
+
+Now , access argocd ui in broweser i.e **argocd.example.com**
+
 By Default, reconsile time in arocd is 3 min.
 To customize the reconsile time, add reconsile  timeout in argocd configmap
 <br>
