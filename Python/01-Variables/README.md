@@ -131,6 +131,38 @@ first_name_to_list = list(first_name)
 print(first_name_to_list)            # ['A', 's', 'a', 'b', 'e', 'n', 'e', 'h']
 ```
 
+<br><br>
+
+### EXERCISES:
+
+**Q.** Using the len() built-in function, find the length of your first name
+
+```
+first_name = 'Amit'
+print(len(first_name))
+```
+
+**Q.** Compare the length of your first name and your last name
+
+```
+first_name = 'Amit'
+last_name = 'kumar'
+len_of_first_name = int(len(first_name))
+len_of_last_name = int(len(last_name))
+if len_of_first_name == len_of_last_name:
+   print('Length is equal')
+else:
+   print('Length is not equal')
+```
+
+**Q.** Declare two number in variable and perform airthematic operations
+
+```
+num1 = int(4)
+num2 = int(5)
+sum = num1 + num2
+print('sum is: ' + str(sum))
+```
 
 
 
