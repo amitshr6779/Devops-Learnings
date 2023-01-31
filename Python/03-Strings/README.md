@@ -162,5 +162,72 @@ print(f'{a} // {b} = {a // b}')
 print(f'{a} ** {b} = {a ** b}')
 ```
 
+**Unpacking String Characters** <br>
+Example:
 
+```
+language = 'Python'
+a,b,c,d,e,f = language # unpacking sequence characters into variables
+print(a) # P
+print(b) # y
+print(c) # t
+print(d) # h
+print(e) # o
+print(f) # n
+```
+
+**Accessing Characters in Strings by Index** <br>
+Example :
+
+```
+language = 'Python'
+first_letter = language[0]
+print(first_letter) # P
+second_letter = language[1]
+print(second_letter) # y
+last_index = len(language) - 1
+last_letter = language[last_index]
+print(last_letter) # n
+```
+
+```
+# To start from right end we can use negative indexing. -1 is the last index.
+language = 'Python'
+last_letter = language[-1]
+print(last_letter) # n
+second_last = language[-2]
+print(second_last) # o
+```
+
+**Slicing Python Strings**
+
+```
+language = 'Python'
+first_three = language[0:3] # starts at zero index and up to 3 but not include 3
+print(first_three) #Pyt
+last_three = language[3:6]
+print(last_three) # hon
+# Another way
+last_three = language[-3:]
+print(last_three)   # hon
+last_three = language[3:]
+print(last_three)   # hon
+```
+
+**Reverse a string**
+
+```
+greeting = 'Hello, World!'
+print(greeting[::-1]) # !dlroW ,olleH
+```
+
+**Skipping Characters While Slicing using step argument**
+
+```
+language = 'Python'
+pto = language[0:6:2] # here last digit is step args , it will move/discard two places
+print(pto) # Pto
+```
+
+#### String Methods
 
