@@ -1,4 +1,4 @@
-# How to achive Persistant Volume now in EKS ?
+# How to achive Persistant Volume in EKS ?
 We can use the Amazon EBS CSI driver to run EBS volumes as K8s PVs. When the driver is deployed, any application that creates a PV in the cluster, results in Amazon automatically creating EBS volumes in the underlying infrastructure.
 <br>
 #### Let's start configuring AWS EBS CSI in EKS
