@@ -58,5 +58,79 @@ local   all             all                                     md5
 `"local all postgres trust"` .should allow me to log in  without password
 And it would, if it appeared before the line that forced every local connection to use md5 authentication!
 
+### POSTGRES CHEATSHEET:
+
+- To access psql cli
+```
+psql -U <USERNAME>
+```
+- To access psql cli with custom port:
+```
+psql -U <USERNAME> -p <PORT>
+```
+- To access psql without password prompt:
+```
+PGPASSWORD=<YOUR-PASSWORD> psql -U <USERNAME> -p <PORT>
+```
+- To access psql with connection string
+```
+psql <Your-DB-Connection-String>
+```
+- To connect remote postgres db
+```
+psql -h <hostname or ip address> -p <port number of remote machine> -d <database name which you want to connect> -U <username of the database server>
+```
+- To connect remote postgres db without password prompt
+```
+PGPASSWORD=<YOUR-PASSWORD> psql -h <hostname or ip address> -p <port number of remote machine> -d <database name which you want to connect> -U <username of the database server>
+```
+Some Postgres DB releated commands:
+```
+\l = list database
+
+\c = check which database
+
+\c test = (switched to test db )
+
+\dt = about relations/tables
+
+```
+```
+CREATE DATABASE <DATABASE-NAME>;
+
+grant all privileges on database <DATABASE-NAME> to <USER>;
+
+\c <DATABASE-NAME>
+
+CREATE TABLE playground (
+    equip_id serial PRIMARY KEY,
+    type varchar (50) NOT NULL,
+    color varchar (25) NOT NULL,
+    location varchar(25) check (location in ('north', 'south', 'west', 'east', 'northeast', 'southeast', 'southwest', 'northwest')),
+    install_date date
+);
 
 
+INSERT INTO playground (type, color, location, install_date) VALUES ('slide', 'blue', 'south', '2017-04-28');
+INSERT INTO playground (type, color, location, install_date) VALUES ('swing', 'yellow', 'northwest', '2018-08-16');
+
+```
+```
+SELECT * FROM playground;
+          OR
+SELECT * FROM "playground";
+````
+
+```
+docker exec -i <conatiner-name> /bin/bash -c "PGPASSWORD=<PASSWORD> pg_dump -U <USER> -p <PORT> <DATABASE-TO-DUMP>" > <DUMP-FILE>.sql
+```
+```
+docker exec -i <conatiner-name> /bin/bash -c "PGPASSWORD=<PASSWORD> dropdb -h 0.0.0.0 -p <PORT>  -U <USER> <DB-TO-DROP>"
+docker exec -i <conatiner-name> /bin/bash -c "PGPASSWORD=<PASSWORD> createdb -h 0.0.0.0 -p <PORT>  -U <USER> -T template0 <DB-to-CREATE>"
+docker exec -i <conatiner-name> /bin/bash -c "PGPASSWORD=<PASSWORD> psql -U <USER> -p <PORT> <DATABASE-TO-RESTORE>" < ./<DUMP-FILE>.sql
+```
+**NOTE**: Note that the drop will fail when there are open connections to the database
+
+```
+DROP DATABASE <Database> WITH (FORCE);
+```
