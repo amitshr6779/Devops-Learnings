@@ -129,7 +129,7 @@ docker exec -i <conatiner-name> /bin/bash -c "PGPASSWORD=<PASSWORD> dropdb -h 0.
 docker exec -i <conatiner-name> /bin/bash -c "PGPASSWORD=<PASSWORD> createdb -h 0.0.0.0 -p <PORT>  -U <USER> -T template0 <DB-to-CREATE>"
 docker exec -i <conatiner-name> /bin/bash -c "PGPASSWORD=<PASSWORD> psql -U <USER> -p <PORT> <DATABASE-TO-RESTORE>" < ./<DUMP-FILE>.sql
 ```
-**NOTE**: Note that the drop will fail when there are open connections to the database
+**NOTE**: The drop will fail when there are open connections to the database
 
 ```
 DROP DATABASE <Database> WITH (FORCE);
