@@ -94,7 +94,9 @@ Some Postgres DB releated commands:
 
 \dt = about relations/tables
 
+\dt schema1.  OR SET schema 'inventory';  =  List tables inside particular schemas. For eg: 'schema1'.
 ```
+- To create DB and Inserting, Updating data
 ```
 CREATE DATABASE <DATABASE-NAME>;
 
@@ -111,26 +113,37 @@ CREATE TABLE playground (
 );
 
 
+
 INSERT INTO playground (type, color, location, install_date) VALUES ('slide', 'blue', 'south', '2017-04-28');
 INSERT INTO playground (type, color, location, install_date) VALUES ('swing', 'yellow', 'northwest', '2018-08-16');
-
+update customers set first_name = 'shelby' where id = 1001;
 ```
+
+- To List data from table
 ```
 SELECT * FROM playground;
           OR
 SELECT * FROM "playground";
 ````
 
+- To take dump and restore using docker command
 ```
 docker exec -i <conatiner-name> /bin/bash -c "PGPASSWORD=<PASSWORD> pg_dump -U <USER> -p <PORT> <DATABASE-TO-DUMP>" > <DUMP-FILE>.sql
-```
-```
+
 docker exec -i <conatiner-name> /bin/bash -c "PGPASSWORD=<PASSWORD> dropdb -h 0.0.0.0 -p <PORT>  -U <USER> -f <DB-TO-DROP>"
+
 docker exec -i <conatiner-name> /bin/bash -c "PGPASSWORD=<PASSWORD> createdb -h 0.0.0.0 -p <PORT>  -U <USER> -T template0 <DB-to-CREATE>"
+
 docker exec -i <conatiner-name> /bin/bash -c "PGPASSWORD=<PASSWORD> psql -U <USER> -p <PORT> <DATABASE-TO-RESTORE>" < ./<DUMP-FILE>.sql
 ```
 **NOTE**: The drop will fail when there are open connections to the database
 
+- To Drop DB forcefully
 ```
 DROP DATABASE <Database> WITH (FORCE);
+```
+
+- To Restore Dump File
+```
+cat <Dump-File>.sql | psql -U <USER> -p <PORT> -d <DB-NAME>
 ```
