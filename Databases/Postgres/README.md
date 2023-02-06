@@ -125,7 +125,7 @@ SELECT * FROM "playground";
 docker exec -i <conatiner-name> /bin/bash -c "PGPASSWORD=<PASSWORD> pg_dump -U <USER> -p <PORT> <DATABASE-TO-DUMP>" > <DUMP-FILE>.sql
 ```
 ```
-docker exec -i <conatiner-name> /bin/bash -c "PGPASSWORD=<PASSWORD> dropdb -h 0.0.0.0 -p <PORT>  -U <USER> <DB-TO-DROP>"
+docker exec -i <conatiner-name> /bin/bash -c "PGPASSWORD=<PASSWORD> dropdb -h 0.0.0.0 -p <PORT>  -U <USER> -f <DB-TO-DROP>"
 docker exec -i <conatiner-name> /bin/bash -c "PGPASSWORD=<PASSWORD> createdb -h 0.0.0.0 -p <PORT>  -U <USER> -T template0 <DB-to-CREATE>"
 docker exec -i <conatiner-name> /bin/bash -c "PGPASSWORD=<PASSWORD> psql -U <USER> -p <PORT> <DATABASE-TO-RESTORE>" < ./<DUMP-FILE>.sql
 ```
