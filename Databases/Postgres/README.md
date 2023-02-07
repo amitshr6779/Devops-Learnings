@@ -147,3 +147,7 @@ DROP DATABASE <Database> WITH (FORCE);
 ```
 cat <Dump-File>.sql | psql -U <USER> -p <PORT> -d <DB-NAME>
 ```
+<br>
+
+**REFRENCES** <br>
+[Postgres CheetSheet](https://quickref.me/postgres)
