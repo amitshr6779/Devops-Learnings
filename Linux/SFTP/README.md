@@ -102,7 +102,7 @@ chown -R  testuser:testuser /home/atidke/.ssh
 /etc/init.d/ssh restart
 ```
 
-</summary> Now Lets Login sftp server from client </sumary>
+</summary> Now , Lets Login sftp server from client </sumary>
 
 ```
 sftp testuser@<sftp-server-DNS-OR-IP>
