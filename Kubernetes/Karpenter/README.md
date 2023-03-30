@@ -75,6 +75,9 @@ spec:
     - key: node.kubernetes.io/instance-type # If not included, all instance types are considered
       operator: In
       values: ["t2.micro", "t2.medium"]
+    - key: "kubernetes.io/arch"
+      operator: In
+      values: ["arm64"]
     - key: karpenter.sh/capacity-type
       operator: In
       values: ["spot"]
