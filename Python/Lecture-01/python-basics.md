@@ -120,6 +120,21 @@ a=0b100
 print(a) i.e 4
 ```
 
+6. **Python is Extensible , Embeded , Robust langiage  and Extensive support of third party of api**  <br>
+   Extensive:  <br>
+   It means other programming language can be used in python  <br>
+   
+   Embeded: <br>
+   It means python can be used with other programming language. <br>
+   
+   Robust: <br>
+   It means it provide  support of error management.  <br>
+   Example: <br>
+   Filling form with correct deatils of name, phone no. , email,address <br>
+   
+   Also provide large amount support of third party API i.e modules/library.
+   <br>
+
 
 
 
