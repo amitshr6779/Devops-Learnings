@@ -149,5 +149,11 @@ cat <Dump-File>.sql | psql -U <USER> -p <PORT> -d <DB-NAME>
 ```
 <br>
 
+<h4> To Prompt for psql password </h4>
+Steps: <br>
+1. vi /var/lib/postgresql/data/pg_hba.conf <br>
+2. update auth method to <b>md5</b>
+
+<br> <br>
 **REFRENCES** <br>
 [Postgres CheetSheet](https://quickref.me/postgres)
