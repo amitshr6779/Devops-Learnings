@@ -34,3 +34,13 @@ mysal#january=1000   //this is true as after # will be considerd as comment valu
 newsal#jan=10000 // error bcz before # newsal is undefined
 
 ```
+<br>
+
+## Data Types in Python
+It allocate memory to input in the progarm i.e to the values  of variables. <br>
+Python is dynamically typed  langiage  so not require to mentioned  data types to the vars. <br>  <br>
+There are 14 Data Types classified as 6 Types : 
+
+![Screenshot from 2023-04-23 21-49-44](https://user-images.githubusercontent.com/84858868/233855965-6a571225-06b3-45a3-ab79-f1ed48ced65f.png)
+
+
