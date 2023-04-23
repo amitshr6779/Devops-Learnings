@@ -43,4 +43,12 @@ There are 14 Data Types classified as 6 Types :
 
 ![Screenshot from 2023-04-23 21-49-44](https://user-images.githubusercontent.com/84858868/233855965-6a571225-06b3-45a3-ab79-f1ed48ced65f.png)
 
+Here, <br>
+type none mens null value defined. <br>
+ex:<br>
 
+```
+x=none
+```
+
+Note: if object/values inside objectid  changes then it is immutable , otherwise if objectid chnages to store same value then it is mutable
