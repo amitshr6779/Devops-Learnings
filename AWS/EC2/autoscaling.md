@@ -8,13 +8,19 @@ STEP:1 Launch an ec2 and deploy your app and  take one AMI  <br>
 
 STEP:2 Create a classic Load Balancer without any instance attached   <br>
 
-STEP: 3 Create a Lauch Configration and provide your ami ,vpc , subnet and sg details <br>
+STEP:3 Create a Lauch Configration and provide your ami ,vpc , subnet and sg details <br>
 
 ![1682326884223](https://user-images.githubusercontent.com/84858868/233953548-6cbd18d0-6904-46b6-a507-7ded1d0b0e65.JPEG)
 
 ![1682326883599](https://user-images.githubusercontent.com/84858868/233953640-95085145-63b9-4c09-b335-b00817f694ec.JPEG)
 
 ![1682326882931](https://user-images.githubusercontent.com/84858868/233953714-aae3b274-6f7c-451d-bbaf-3f92335c36a8.JPEG)
+
+<br>
+
+STEP:4 Create ASG  and select Launch config. , VPC & Subnet , Attach existing CLB and choose scaling policy none ( we will edit after ASG created )
+
+<br>
 
 ![1682326882193](https://user-images.githubusercontent.com/84858868/233953750-ffa92002-17d2-4f92-9e05-9000e7371630.JPEG)
 
@@ -25,6 +31,8 @@ STEP: 3 Create a Lauch Configration and provide your ami ,vpc , subnet and sg de
 ![1682326876403](https://user-images.githubusercontent.com/84858868/233953931-ac9c25fc-bd9f-451c-bb89-c7a2bbacf64b.JPEG)
 
 ![1682326876025](https://user-images.githubusercontent.com/84858868/233953957-28187cf2-9967-40c5-b3d0-d713a2fbb737.JPEG)
+
+<br> Edit ASG, Add dynamic scaling policy i.e target tracking policy. Add CPU thresold
 
 ![1682326873664](https://user-images.githubusercontent.com/84858868/233953978-db7aaaa9-4a83-4c09-916b-b353d2bd0bf2.JPEG)
 
