@@ -43,25 +43,29 @@ Note: Status should be above 2/2 to check loadbancer is running successfully.
 
 <br>
 
-3. Now Create ALB  <br>
+3. Now Create ALB  <br> <br>
 ![1682282568096](https://user-images.githubusercontent.com/84858868/233865438-7c4d770a-d186-48f2-94a8-40bbd722275c.JPEG)
 ![1682282567670](https://user-images.githubusercontent.com/84858868/233865445-664416d7-295b-42ad-a3f7-af809732d420.JPEG)
+
+<br> 4. Add listener i.e point to one target group. Here, Delhi target Group <br> <br>
 
 ![1682282567413](https://user-images.githubusercontent.com/84858868/233865450-63d4d49e-6fe7-4700-9db8-3f04559d9d84.JPEG)
 ![1682282566387](https://user-images.githubusercontent.com/84858868/233865453-ba648e67-fc9d-400f-9130-8c18704f3af9.JPEG)
 
 ![1682282565174](https://user-images.githubusercontent.com/84858868/233865462-f2647e53-aaa9-423c-aa46-016a3cd3a1df.JPEG)
 
+<br> 5. Click on listener and Add Rule --> Manage Rules
 
 ![1682282564387](https://user-images.githubusercontent.com/84858868/233865470-d08ebe28-40de-492e-8f4c-5ade2962b96f.JPEG)
 
+<br> 6. Add website path and target group name . Here, /kolkata and kolkata target group name 
+<br>
 
 ![1682282564099](https://user-images.githubusercontent.com/84858868/233865477-1bec4fd1-1194-4990-8619-ebf11d20e5e6.JPEG)
 
 ![1682282563800](https://user-images.githubusercontent.com/84858868/233865481-24ccbff2-432c-47bd-9fa3-636ef3c1a45b.JPEG)
 
 ![1682282563591](https://user-images.githubusercontent.com/84858868/233865488-a01431e4-2327-46e8-b92a-b145041763f9.JPEG)
-![1682282563423](https://user-images.githubusercontent.com/84858868/233865504-a243a013-e5fe-4869-94ac-b9cb3598b3b9.JPEG)
 
 
 
