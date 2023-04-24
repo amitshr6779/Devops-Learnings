@@ -22,9 +22,14 @@ Note: Status should be above 2/2 to check loadbancer is running successfully.
 
 ## Application Loadbalancer
 
+### Steps to Configure Classic Loadbalancer :
+
+1.  Create 3 ec2 with webserver installed , Host multiple public websites  on  EC2  i.e /delhi , /mumbai , /kolkata <br>
+
+
 ![1682282572017](https://user-images.githubusercontent.com/84858868/233865408-56d03eb4-6578-4637-82a9-5896040d46a4.JPEG)
 
-
+2. Create 3 target group for each ec2  <br>
 ![1682282571327](https://user-images.githubusercontent.com/84858868/233865412-1e16d9b1-25e4-482a-b0fb-f1302ffc5225.JPEG)
 ![1682282570809](https://user-images.githubusercontent.com/84858868/233865420-8aa3dad2-8ca0-43c3-948f-f2742462c0c8.JPEG)
 
@@ -35,6 +40,10 @@ Note: Status should be above 2/2 to check loadbancer is running successfully.
 ![1682282569965](https://user-images.githubusercontent.com/84858868/233865430-1d2fb2f4-e849-488c-9fdf-99bacb53db0e.JPEG)
 
 ![1682282568762](https://user-images.githubusercontent.com/84858868/233865436-c2dce38f-33e8-4c02-87c4-4b34b7641df9.JPEG)
+
+<br>
+
+3. Now Create ALB  <br>
 ![1682282568096](https://user-images.githubusercontent.com/84858868/233865438-7c4d770a-d186-48f2-94a8-40bbd722275c.JPEG)
 ![1682282567670](https://user-images.githubusercontent.com/84858868/233865445-664416d7-295b-42ad-a3f7-af809732d420.JPEG)
 
