@@ -124,6 +124,17 @@ print(hex(0b1011))   //0xb
 print(hex(0o121))  //0x51
 ```
 
+**Exceptions**
+
+```
+x=0b110
+y=oct(b)
+print(y,id(y),type(y))
+0o6 140328112655152 <class 'str'>
+
+( It is giving class string for above octal number because  octal number start with `0o` so it consider it as string
+```
+
 
 
 
