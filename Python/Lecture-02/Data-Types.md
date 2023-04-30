@@ -52,3 +52,82 @@ x=none
 ```
 
 Note: if object/values inside objectid  changes then it is immutable , otherwise if objectid chnages to store same value then it is mutable
+
+## Int data type:
+It represet whole number i.e number without point <br>
+Also int data tyype other number system like <br>
+* Decimal Number system
+* Binary Number system
+* ocata Number system
+* Hexa decimal number system
+
+* Decimal Number System
+It default number system i.e 0 to 9  ( Base 10 )
+
+**Binary number system**  <br>
+Number represent binary 0,1  <br>
+ex: 16 = 10000 <br>
+In python it is represent 0b,0B <br>
+
+ex: 
+
+```
+x=0b010101
+print(x)  // 21
+```
+Note: even toght we store number in binary but when we print we will get o/p in decimal numaber sysytem  <br>
+
+**Octal Number system** <br>
+Base 8 literal number is call octal number syystem <br>
+number is represented in hexa decimal form i.e 0 to 8 <br>
+In Python it is represented by 0o or 0O  <br>
+Ex:  <br>
+3252 = 3*8^3 + 2*8^2 + 5*8^1 + 2*8^0  <br>
+```
+x=0o1234
+print(x) //668
+```
+**Hexa Decimal number system**  <br>
+Hexa decimal digits are 0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F  <br>
+Base 16 is used to represent number <br>
+In python 0x ot 0X as prefix used to represent hexa number  <br>
+```
+x=0x118aed6
+print(x)  //  18394838
+```
+
+**Base conversion types**  <br>
+
+3 Types of base conversion types : <br>
+* bin()
+it is uded to convert any other number system to binary
+```
+print(bin(56))  //0b111000
+print(bin(0o7))  //0nb11
+print(bin(0x1A02))  //0b1101000000010
+```
+
+* oct()
+it is uded to convert any other number system to octal
+```
+print(oct(16))  //0o20
+print(oct(0b111))  //0o7
+print(oct(0x1AB))  //0o653
+
+```
+* hex()
+It is used to convert any other number system to hexa decimal number.
+
+```
+print(hex(10))  //0xa
+print(hex(0b1011))   //0xb
+print(hex(0o121))  //0x51
+```
+
+
+
+
+
+
+
+
