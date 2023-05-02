@@ -248,4 +248,5 @@ Finally we can login MySql DB, through secret applied in cluster
 ## Refrences
 https://fluxcd.io/flux/guides/mozilla-sops/  <br>
 https://fluxcd.io/flux/components/kustomize/kustomization/#secrets-decryption <br>
-[Marco Lenzo](https://www.youtube.com/watch?v=aGyQcs3zyKg)
+[Marco Lenzo](https://www.youtube.com/watch?v=aGyQcs3zyKg)  <br>
+[Techno Tim](https://docs.technotim.live/posts/secret-encryption-sops/#vscode)
