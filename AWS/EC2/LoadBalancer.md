@@ -97,6 +97,15 @@ It works in TCP layer. <br>
 
 
 
+##Internal Loadbalancer 
+It is private load balancer , access using VPN or Same  VPC  Public Instnace. <br>
+Steps to Configure: <br>
+* choose LB Types
+* Select Internal Load balncer
+* Select VPC and subnet
+* Add Security Group
+* Add targest
+* Add Healt-check TCP
 
 
 
