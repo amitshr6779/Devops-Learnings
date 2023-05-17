@@ -74,20 +74,24 @@ Note: Status should be above 2/2 to check loadbancer is running successfully.
 It works in TCP layer. <br>
 
 <b>Steps</b>
-* Create two ec2 in diffrent avalabity zone
-
-![Screenshot_2023-05-17-18-59-57-03_f2cb81fb7cf38af7978f186f2a61634a](https://github.com/amitshr6779/Devops-Learnings/assets/84858868/a003ffb3-1a89-465b-8922-42a712b1c95d)
+* Create two ec2 in diffrent avalabity zone.
+* Choose Instance or Ip Address
 ![Screenshot_2023-05-17-19-00-10-88_f2cb81fb7cf38af7978f186f2a61634a](https://github.com/amitshr6779/Devops-Learnings/assets/84858868/c4b46c1b-4753-4b38-8aec-8d7a1d63cce4)
+* choose protocol as TCP
 ![Screenshot_2023-05-17-19-00-26-64_f2cb81fb7cf38af7978f186f2a61634a](https://github.com/amitshr6779/Devops-Learnings/assets/84858868/76bcddf7-f405-48ba-8525-486a586090f1)
+* Create ALB with empty target group, add target group later.
 ![Screenshot_2023-05-17-19-00-43-49_f2cb81fb7cf38af7978f186f2a61634a](https://github.com/amitshr6779/Devops-Learnings/assets/84858868/3d7d800d-835c-4a13-800a-0b5153076ffe)
 ![Screenshot_2023-05-17-19-01-06-65_f2cb81fb7cf38af7978f186f2a61634a](https://github.com/amitshr6779/Devops-Learnings/assets/84858868/e372dede-7b0a-430c-a2d7-044039022a2a)
+* Now, Create  Traget  group with register  target group with private ip
 ![Screenshot_2023-05-17-19-01-36-97_f2cb81fb7cf38af7978f186f2a61634a](https://github.com/amitshr6779/Devops-Learnings/assets/84858868/cd16a776-2542-46c5-a666-c719d0a7a7b9)
-
+* Register Pending target
 ![Screenshot_2023-05-17-19-01-45-29_f2cb81fb7cf38af7978f186f2a61634a](https://github.com/amitshr6779/Devops-Learnings/assets/84858868/5515ccda-1ee7-4f91-9195-4a326b6d9446)
+* Wait for ALB to active
 ![Screenshot_2023-05-17-19-03-10-27_f2cb81fb7cf38af7978f186f2a61634a](https://github.com/amitshr6779/Devops-Learnings/assets/84858868/795e4fe8-0d41-4db4-b051-01aeb59fe46b)
-
+* Access NLB url in browser  from VPN or Public EC2  in that VPC
 ![Screenshot_2023-05-17-19-03-21-76_f2cb81fb7cf38af7978f186f2a61634a](https://github.com/amitshr6779/Devops-Learnings/assets/84858868/38d9d1f2-bf42-4d5c-91db-6147dbf88aab)
 
+**NOTE** : it will redirect traffic to one ec2/IP only untill it become unresponsive and High load then it will transfer traffic to other target group
 
 
 
