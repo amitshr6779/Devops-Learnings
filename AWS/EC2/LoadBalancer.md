@@ -70,7 +70,7 @@ Note: Status should be above 2/2 to check loadbancer is running successfully.
 <br> 
 <hr>
 
-#Network LoadBalaner 
+# Network LoadBalaner 
 It works in TCP layer. <br>
 
 <b>Steps</b>
@@ -93,11 +93,9 @@ It works in TCP layer. <br>
 
 **NOTE** : it will redirect traffic to one ec2/IP only untill it become unresponsive and High load then it will transfer traffic to other target group
 
-
-
 <br>
-
-#Internal Loadbalancer 
+<hr>
+# Internal Loadbalancer 
 
 It is private load balancer , access using VPN or Same  VPC  Public Instnace. <br>
 Steps to Configure: <br>
