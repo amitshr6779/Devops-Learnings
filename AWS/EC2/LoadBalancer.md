@@ -95,9 +95,10 @@ It works in TCP layer. <br>
 
 
 
+<br>
 
+#Internal Loadbalancer 
 
-##Internal Loadbalancer 
 It is private load balancer , access using VPN or Same  VPC  Public Instnace. <br>
 Steps to Configure: <br>
 * choose LB Types
