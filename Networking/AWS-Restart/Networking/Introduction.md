@@ -49,4 +49,27 @@ The diagram illustrates how data flows in an OSI-compliant network from a source
 9. After the data has been transformed through the OSI layers, it is in a package format that is ready to be transmitted over the physical network. <br> <br>
 10.Once the target computer receives the data package, it unpacks the data through the OSI layers, but in reverse, from layer 1 (physical) through 7 (application). <br> <br>
 
+![Screenshot from 2023-05-18 20-12-13](https://github.com/amitshr6779/Devops-Learnings/assets/84858868/47eb64a3-7e96-4ca1-b653-8718897a0163)
+
+<br> <br>
+
+![Screenshot from 2023-05-18 20-14-30](https://github.com/amitshr6779/Devops-Learnings/assets/84858868/64caf3c9-56c3-480d-8868-4f96f78ddd24)
+
+The client connects to the server over a network. <br>
+A client is also a computer hardware device that accesses the data or a service that is managed by another computer hardware device, which is also called a server. <br>
+A client can also refer to software on the accessing device. For example, a web browser is a client for accessing content from a web server. <br>
+
+![Screenshot from 2023-05-18 20-19-29](https://github.com/amitshr6779/Devops-Learnings/assets/84858868/f13cf6c8-d45e-49bd-9287-27a5c09bd2c2)
+
+![Screenshot from 2023-05-18 20-21-51](https://github.com/amitshr6779/Devops-Learnings/assets/84858868/93e24e1b-e302-4836-bbf6-35f2aa147826)
+
+![Screenshot from 2023-05-18 20-22-26](https://github.com/amitshr6779/Devops-Learnings/assets/84858868/f329ce33-e059-4556-9d78-9a1d144fd8e6)
+
+![Screenshot from 2023-05-18 20-22-46](https://github.com/amitshr6779/Devops-Learnings/assets/84858868/0afdba5b-1e0b-493d-93fa-97b235684f4c)
+
+![Screenshot from 2023-05-18 20-23-03](https://github.com/amitshr6779/Devops-Learnings/assets/84858868/95f07b5f-5dbe-4732-a225-e9f351b887df)
+
+![Screenshot from 2023-05-18 20-23-19](https://github.com/amitshr6779/Devops-Learnings/assets/84858868/f4724412-9c26-466b-bc1f-20d48b3c9eb0)
+
+![Screenshot from 2023-05-18 20-23-37](https://github.com/amitshr6779/Devops-Learnings/assets/84858868/c64041e6-0921-4834-8113-7c936c7c9d65)
 
