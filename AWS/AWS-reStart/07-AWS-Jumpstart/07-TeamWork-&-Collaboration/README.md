@@ -1,0 +1,7 @@
+![Screenshot_2023-06-12-11-24-16-27_9b802e6f59eebfadb93b18d42bc2bd21](https://github.com/amitshr6779/Devops-Learnings/assets/84858868/90cfdef0-5eed-4f32-bdaf-926691aa251b)
+![Screenshot_2023-06-12-11-24-18-29_9b802e6f59eebfadb93b18d42bc2bd21](https://github.com/amitshr6779/Devops-Learnings/assets/84858868/90c0eea7-a331-4e41-ac67-b99d6b0187a7)
+![Screenshot_2023-06-12-11-24-20-14_9b802e6f59eebfadb93b18d42bc2bd21](https://github.com/amitshr6779/Devops-Learnings/assets/84858868/8f23b5e7-8db0-4521-9316-099de4b84816)
+![Screenshot_2023-06-12-11-24-21-87_9b802e6f59eebfadb93b18d42bc2bd21](https://github.com/amitshr6779/Devops-Learnings/assets/84858868/7394a39f-d9df-4480-9165-82bbf95c3e9e)
+![Screenshot_2023-06-12-11-24-23-54_9b802e6f59eebfadb93b18d42bc2bd21](https://github.com/amitshr6779/Devops-Learnings/assets/84858868/48fd55de-593e-4cd2-b62b-128f07b4c348)
+![Screenshot_2023-06-12-11-24-25-13_9b802e6f59eebfadb93b18d42bc2bd21](https://github.com/amitshr6779/Devops-Learnings/assets/84858868/26d41967-1fad-441b-a61b-4369ed77fa4d)
+![Screenshot_2023-06-12-11-24-26-83_9b802e6f59eebfadb93b18d42bc2bd21](https://github.com/amitshr6779/Devops-Learnings/assets/84858868/2f4a6052-c3dd-40c6-b6b6-afcdb96aabd8)
