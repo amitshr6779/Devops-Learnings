@@ -147,6 +147,12 @@ DROP DATABASE <Database> WITH (FORCE);
 ```
 cat <Dump-File>.sql | psql -U <USER> -p <PORT> -d <DB-NAME>
 ```
+- To take dump of single table
+```
+pg_dump --host <SERVER-NAME> --port 5432 --username "user" --role "user"  --format plain  --file "./user-table.sql" --table "public.\"UserTable\"" "<DB-NAME>"
+
+docker exec -i postgres /bin/bash -c "pg_dump -U postgres -d testdb -t 'public.\"TABLE-NAME\"' " > table.sql
+```
 <br>
 
 <h4> To Prompt for psql password </h4>
