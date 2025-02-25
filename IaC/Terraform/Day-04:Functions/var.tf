@@ -36,6 +36,7 @@ variable "allowed_ports" {
   default = "80,443,3306"
 }
 
+
 variable "environment" {
     type = string
     default = "dev"

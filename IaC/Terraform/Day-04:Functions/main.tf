@@ -1,6 +1,7 @@
 locals {
   rgname = lower(replace(var.project_name, " ", "-"))
   tags  = merge(var.def_tags, var.custom_tags)
+
   //substr, Extracts the first 15 characters from
   formatted_sa_name =  lower(replace(substr(var.storage_account_name, 0,15), " " ,""))
 
@@ -14,6 +15,7 @@ locals {
     name = "port-${i}"
     port = i 
   }]
+
   //lookup function retrieves a value from a map based on a given key. If the key does not exist, it returns a default value. here, 1st args is map values, 2nd args is key, & 3rd is default value
   vm_size = lookup(var.vm_size, var. environment, "Standard_D2s_v3")
 
@@ -46,6 +48,7 @@ resource "azurerm_network_security_group" "nsg" {
     name = "app-nsg"
     resource_group_name = azurerm_resource_group.exmaple.name
     location = azurerm_resource_group.exmaple.location
+    
     dynamic "security_rule" {
         for_each = local.nsg_ports
     content {
