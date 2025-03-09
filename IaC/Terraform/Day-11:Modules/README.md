@@ -157,17 +157,3 @@ terraform apply -target=module.<module_name>
 
 ---
 
-## License
-This module is licensed under **[MIT/Apache/GPL]**.
-
----
-
-## Contributors
-- [Your Name] - [GitHub Profile]
-- [Other Contributors]
-
----
-
-## Support
-For issues, please create a **GitHub Issue** or reach out via **[Slack/Email]**.
-
