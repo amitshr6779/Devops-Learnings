@@ -1,0 +1,11 @@
+.terraform/
+.terraform.lock.hcl
+terraform.tfstate.backup
+terraform.tfstate
+./function-code/
+function-code/*
+functionapp_func2.zip
+functionapp_func1.zip
+./functionapp_func2.zip
+./functionapp_func1.zip
+

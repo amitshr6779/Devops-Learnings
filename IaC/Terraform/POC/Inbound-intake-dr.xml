@@ -1,0 +1,16 @@
+<fragment>
+	<choose>
+		<when condition="@(&quot;South Central US&quot;.Equals(context.Deployment.Region, StringComparison.OrdinalIgnoreCase))">
+			<set-backend-service base-url="https://no-iris-intake-pdev-sc-func.azurewebsites.net/api" />
+			<set-query-parameter name="code" exists-action="skip">
+				<value>{{demo-function-app6779}}</value>
+			</set-query-parameter>
+		</when>
+		<when condition="@(&quot;North Central US&quot;.Equals(context.Deployment.Region, StringComparison.OrdinalIgnoreCase))">
+			<set-backend-service base-url="https://no-iris-intake-pdev-nc-func.azurewebsites.net/api" />
+			<set-query-parameter name="code" exists-action="skip">
+				<value>{{example-function-app6779}}</value>
+			</set-query-parameter>
+		</when>
+	</choose>
+</fragment>

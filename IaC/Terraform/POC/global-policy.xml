@@ -1,0 +1,10 @@
+<policies>
+    <inbound>
+        <include-fragment fragment-id="Inbound-Intake-dr" />
+    </inbound>
+    <backend>
+        <forward-request />
+    </backend>
+    <outbound />
+    <on-error />
+</policies>

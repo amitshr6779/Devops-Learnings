@@ -1,0 +1,7 @@
+<policies>
+  <inbound>
+    <set-header name="x-op-policy" exists-action="override">
+      <value>custom-for-op</value>
+    </set-header>
+  </inbound>
+</policies>

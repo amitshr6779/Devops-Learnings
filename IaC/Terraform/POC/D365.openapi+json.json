@@ -1,0 +1,49 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "D365",
+        "description": "Import from \"no-iris-inventory-dev-sc-func\" Function App",
+        "version": "1.0"
+    },
+    "servers": [
+        {
+            "url": "https://no-iris-pdev-sc-apim.azure-api.net/d365"
+        }
+    ],
+    "paths": {
+        "/transaction/response": {
+            "post": {
+                "summary": "SaveTransactionResponse",
+                "description": "SaveTransactionResponse",
+                "operationId": "post-savetransactionresponse",
+                "responses": {
+                    "200": {
+                        "description": "null"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "apiKeyHeader": {
+                "type": "apiKey",
+                "name": "api-key",
+                "in": "header"
+            },
+            "apiKeyQuery": {
+                "type": "apiKey",
+                "name": "api-key",
+                "in": "query"
+            }
+        }
+    },
+    "security": [
+        {
+            "apiKeyHeader": []
+        },
+        {
+            "apiKeyQuery": []
+        }
+    ]
+}

@@ -1,0 +1,737 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "Terminal",
+        "description": "This is the OpenAPI Document on Azure Functions",
+        "version": "1.0"
+    },
+    "servers": [
+        {
+            "url": "https://no-iris-pdev-sc-apim.azure-api.net/terminal"
+        }
+    ],
+    "paths": {
+        "/invoices/payments": {
+            "post": {
+                "tags": [
+                    "TerminalPayment"
+                ],
+                "summary": "PostInvoicesPayments",
+                "description": "PostInvoicesPayments",
+                "operationId": "PostInvoicesPayments",
+                "requestBody": {
+                    "description": "InvoicePaymentRequestResponseDTO model is required",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/invoicePaymentRequestResponseDTO"
+                            },
+                            "example": {
+                                "method": "string",
+                                "amount": 0,
+                                "paymentId": "string",
+                                "orderId": "string",
+                                "referenceId": "string",
+                                "type": "string",
+                                "entryMethod": "string",
+                                "result": "string",
+                                "state": "string",
+                                "created": "string",
+                                "authCode": "string",
+                                "cardType": "string",
+                                "first6": "string",
+                                "last4": "string",
+                                "expirationDate": "string",
+                                "cardholderName": "string",
+                                "token": "string",
+                                "createdTime": 0,
+                                "surchargeAmount": 0,
+                                "requestId": "string",
+                                "locationId": "string",
+                                "serialNumber": "string",
+                                "invoiceId": "string",
+                                "signature": "string"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "The OK response",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/response"
+                                },
+                                "examples": {
+                                    "default": {
+                                        "value": null
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "The bad request response",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/response"
+                                },
+                                "examples": {
+                                    "default": {
+                                        "value": null
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "The not found response",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/response"
+                                },
+                                "examples": {
+                                    "default": {
+                                        "value": null
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "The internal server error",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/response"
+                                },
+                                "examples": {
+                                    "default": {
+                                        "value": null
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/invoices/getInfoForVirtualRefund": {
+            "get": {
+                "summary": "GetInfoForVirtualRefund",
+                "description": "GetInfoForVirtualRefund",
+                "operationId": "get-getinfoforvirtualrefund",
+                "responses": {
+                    "200": {
+                        "description": "null"
+                    }
+                }
+            }
+        },
+        "/invoices/documents": {
+            "post": {
+                "summary": "PostInvoicesDocuments",
+                "description": "PostInvoicesDocuments",
+                "operationId": "post-postinvoicesdocuments",
+                "responses": {
+                    "200": {
+                        "description": "null"
+                    }
+                }
+            }
+        },
+        "/invoices/careCredits/refunds": {
+            "post": {
+                "summary": "PostInvoicesCareCreditsRefunds",
+                "description": "PostInvoicesCareCreditsRefunds",
+                "operationId": "post-postinvoicescarecreditsrefunds",
+                "responses": {
+                    "200": {
+                        "description": "null"
+                    }
+                }
+            }
+        },
+        "/invoices/complete": {
+            "post": {
+                "summary": "PostInvoicesComplete",
+                "description": "PostInvoicesComplete",
+                "operationId": "post-postinvoicescomplete",
+                "responses": {
+                    "200": {
+                        "description": "null"
+                    }
+                }
+            }
+        },
+        "/invoices/careCredits": {
+            "post": {
+                "summary": "PostInvoicesCareCredits",
+                "description": "PostInvoicesCareCredits",
+                "operationId": "post-postinvoicescarecredits",
+                "responses": {
+                    "200": {
+                        "description": "null"
+                    }
+                }
+            }
+        },
+        "/invoices/payments/refunds": {
+            "post": {
+                "summary": "PostInvoicesPaymentsRefunds",
+                "description": "PostInvoicesPaymentsRefunds",
+                "operationId": "post-postinvoicespaymentsrefunds",
+                "responses": {
+                    "200": {
+                        "description": "null"
+                    }
+                }
+            }
+        },
+        "/invoices/details": {
+            "get": {
+                "summary": "GetInvoiceDetails",
+                "description": "GetInvoiceDetails",
+                "operationId": "get-getinvoicedetails",
+                "responses": {
+                    "200": {
+                        "description": "null"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "cardRefundResultDTO": {
+                "required": [
+                    "orderId",
+                    "paymentId",
+                    "result",
+                    "refundId",
+                    "amount",
+                    "fullRefund",
+                    "requestId",
+                    "locationId",
+                    "serialNumber",
+                    "invoiceId",
+                    "signature"
+                ],
+                "type": "object",
+                "properties": {
+                    "orderId": {
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "paymentId": {
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "result": {
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "refundId": {
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "amount": {
+                        "type": "number",
+                        "format": "double"
+                    },
+                    "fullRefund": {
+                        "type": "boolean"
+                    },
+                    "requestId": {
+                        "minLength": 1,
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "locationId": {
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "serialNumber": {
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "invoiceId": {
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "signature": {
+                        "minLength": 1,
+                        "type": "string"
+                    }
+                }
+            },
+            "careCreditInvoiceDTO": {
+                "required": [
+                    "transactionId",
+                    "authorizationCode",
+                    "avsCode",
+                    "responseText",
+                    "ofpLanguage",
+                    "cvV2Result",
+                    "token",
+                    "accountNumber",
+                    "declineReason",
+                    "amount",
+                    "promoCode",
+                    "requestId",
+                    "locationId",
+                    "serialNumber",
+                    "invoiceId",
+                    "signature"
+                ],
+                "type": "object",
+                "properties": {
+                    "responseCode": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "type": "string"
+                    },
+                    "transactionId": {
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "authorizationCode": {
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "avsCode": {
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "responseText": {
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "ofpLanguage": {
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "cvV2Result": {
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "token": {
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "accountNumber": {
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "declineReason": {
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "amount": {
+                        "type": "number",
+                        "format": "double"
+                    },
+                    "promoCode": {
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "requestId": {
+                        "minLength": 1,
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "locationId": {
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "serialNumber": {
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "invoiceId": {
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "signature": {
+                        "minLength": 1,
+                        "type": "string"
+                    }
+                }
+            },
+            "careCreditRefundResultDTO": {
+                "required": [
+                    "requestId",
+                    "locationId",
+                    "serialNumber",
+                    "invoiceId",
+                    "signature"
+                ],
+                "type": "object",
+                "properties": {
+                    "responseCode": {
+                        "type": "string"
+                    },
+                    "responseText": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "type": "string"
+                    },
+                    "transactionId": {
+                        "type": "string"
+                    },
+                    "requestId": {
+                        "minLength": 1,
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "locationId": {
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "serialNumber": {
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "invoiceId": {
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "signature": {
+                        "minLength": 1,
+                        "type": "string"
+                    }
+                }
+            },
+            "completeInvoiceDTO": {
+                "required": [
+                    "requestId",
+                    "locationId",
+                    "serialNumber",
+                    "invoiceId",
+                    "signature"
+                ],
+                "type": "object",
+                "properties": {
+                    "requestId": {
+                        "minLength": 1,
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "locationId": {
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "serialNumber": {
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "invoiceId": {
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "signature": {
+                        "minLength": 1,
+                        "type": "string"
+                    }
+                }
+            },
+            "documentGetDTO": {
+                "required": [
+                    "title",
+                    "acknowledged"
+                ],
+                "type": "object",
+                "properties": {
+                    "title": {
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "acknowledged": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "documentResponseDTO": {
+                "required": [
+                    "documents",
+                    "requestId",
+                    "locationId",
+                    "serialNumber",
+                    "invoiceId",
+                    "signature"
+                ],
+                "type": "object",
+                "properties": {
+                    "documents": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/documentGetDTO"
+                        }
+                    },
+                    "requestId": {
+                        "minLength": 1,
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "locationId": {
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "serialNumber": {
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "invoiceId": {
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "signature": {
+                        "minLength": 1,
+                        "type": "string"
+                    }
+                }
+            },
+            "invoicePaymentRequestResponseDTO": {
+                "required": [
+                    "method",
+                    "amount",
+                    "paymentId",
+                    "orderId",
+                    "referenceId",
+                    "type",
+                    "entryMethod",
+                    "result",
+                    "state",
+                    "created",
+                    "authCode",
+                    "cardType",
+                    "first6",
+                    "last4",
+                    "expirationDate",
+                    "cardholderName",
+                    "token",
+                    "createdTime",
+                    "surchargeAmount",
+                    "requestId",
+                    "locationId",
+                    "serialNumber",
+                    "invoiceId",
+                    "signature"
+                ],
+                "type": "object",
+                "properties": {
+                    "method": {
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "amount": {
+                        "type": "number",
+                        "format": "double"
+                    },
+                    "paymentId": {
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "orderId": {
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "referenceId": {
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "type": {
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "entryMethod": {
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "result": {
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "state": {
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "created": {
+                        "minLength": 1,
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "authCode": {
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "cardType": {
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "first6": {
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "last4": {
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "expirationDate": {
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "cardholderName": {
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "token": {
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "createdTime": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "surchargeAmount": {
+                        "type": "number",
+                        "format": "double"
+                    },
+                    "requestId": {
+                        "minLength": 1,
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "locationId": {
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "serialNumber": {
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "invoiceId": {
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "signature": {
+                        "minLength": 1,
+                        "type": "string"
+                    }
+                }
+            },
+            "response": {
+                "type": "object",
+                "properties": {
+                    "statusCode": {
+                        "enum": [
+                            100,
+                            101,
+                            102,
+                            103,
+                            200,
+                            201,
+                            202,
+                            203,
+                            204,
+                            205,
+                            206,
+                            207,
+                            208,
+                            226,
+                            300,
+                            300,
+                            301,
+                            301,
+                            302,
+                            302,
+                            303,
+                            303,
+                            304,
+                            305,
+                            306,
+                            307,
+                            307,
+                            308,
+                            400,
+                            401,
+                            402,
+                            403,
+                            404,
+                            405,
+                            406,
+                            407,
+                            408,
+                            409,
+                            410,
+                            411,
+                            412,
+                            413,
+                            414,
+                            415,
+                            416,
+                            417,
+                            421,
+                            422,
+                            423,
+                            424,
+                            426,
+                            428,
+                            429,
+                            431,
+                            451,
+                            500,
+                            501,
+                            502,
+                            503,
+                            504,
+                            505,
+                            506,
+                            507,
+                            508,
+                            510,
+                            511
+                        ],
+                        "type": "integer",
+                        "format": "int32",
+                        "default": 100
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "result": {
+                        "type": "object"
+                    },
+                    "hasError": {
+                        "type": "boolean"
+                    }
+                }
+            }
+        },
+        "securitySchemes": {
+            "apiKeyHeader": {
+                "type": "apiKey",
+                "name": "api-key",
+                "in": "header"
+            },
+            "apiKeyQuery": {
+                "type": "apiKey",
+                "name": "api-key",
+                "in": "query"
+            }
+        }
+    },
+    "security": [
+        {
+            "apiKeyHeader": []
+        },
+        {
+            "apiKeyQuery": []
+        }
+    ]
+}
