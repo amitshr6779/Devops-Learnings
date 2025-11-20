@@ -1,0 +1,14 @@
+CPU Usage: 39.9%
+RAM Usage:  92.9%
+Disk Usage: 97.7%
+Total number of processes running: 638
+CPU Usage: 36.9%
+RAM Usage:  92.7%
+Disk Usage: 97.7%
+Total number of processes running: 638
+Traceback (most recent call last):
+  File "main.py", line 20, in <module>
+    cpu= psutil.cpu_percent(interval=1)
+  File "/home/amit/skills/IaaC/2025-Terraform/Devops-Learnings/Python/Mini-Projects/firstprojectVenv/lib/python3.8/site-packages/psutil/__init__.py", line 1829, in cpu_percent
+    time.sleep(interval)
+KeyboardInterrupt

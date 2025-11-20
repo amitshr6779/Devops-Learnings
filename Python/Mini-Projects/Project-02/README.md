@@ -1,0 +1,1 @@
+#script that reads a text file and prints each line.

@@ -1,0 +1,1 @@
+#script that copies a file from one folder to another using Python
