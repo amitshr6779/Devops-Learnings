@@ -1,3 +1,6 @@
+# 🚀 8. Mini Project — User Profile Manager
+
+
 candidate_details ={
     "name": "John Doe",
     "age": 28,
