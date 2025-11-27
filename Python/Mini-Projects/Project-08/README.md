@@ -1,20 +1,3 @@
----
-
-````markdown
-# Python Decorators – Beginner Friendly Guide
-
-This guide explains the core ideas behind decorators in Python:
-
-- Higher-Order Functions  
-- Inner Functions  
-- Closures  
-- Decorators  
-- *args and **kwargs  
-
-All concepts are explained in simple, easy-to-understand language.
-
----
-
 ## 1️⃣ Higher-Order Functions
 
 A **Higher-Order Function** is a function that:
