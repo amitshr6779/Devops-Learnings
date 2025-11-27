@@ -1,0 +1,2 @@
+  2025-11-28 00:55:34 Function 'sample_function' called with args: (5, 10), kwargs: {}
+  2025-11-28 00:55:34 Function 'calculator' called with args: (), kwargs: {}
