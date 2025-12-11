@@ -1,0 +1,11 @@
+{
+    "name": "Bob Johnson",
+    "age": 35,
+    "department": "Engineering",
+    "salary": 85000,
+    "projects": [
+        "Project A",
+        "Project B",
+        "Project C"
+    ]
+}
