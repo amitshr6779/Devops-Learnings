@@ -1,6 +1,5 @@
 ---
 
-````markdown
 # 📘 Object-Oriented Programming (OOPS) – Simple Notes (Python)
 
 This document contains **easy and clear notes** on OOPS concepts in Python,
@@ -320,9 +319,6 @@ Example:
 
 ---
 
-```
 
 ---
 
-OK
-```
